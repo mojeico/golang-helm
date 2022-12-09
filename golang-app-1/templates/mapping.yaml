@@ -1,0 +1,11 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: golang-app-1
+  namespace: default
+spec:
+  prefix: /app1
+  service: golang-app-1
+
+
+
