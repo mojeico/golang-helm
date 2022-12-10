@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    #notifications.argoproj.io/subscribe.on-deployed.teams: developer
+    notifications.argoproj.io/subscribe.on-sync-failed.teams: developer
+    notifications.argoproj.io/subscribe.on-health-degraded.teams: developer
+  name: golang-app-1
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    helm:
+      parameters:
+        #- name: image.tag
+        #  value: $ARGOCD_APP_REVISION
+        #- name: migrations.image.tag
+        #  value: $ARGOCD_APP_REVISION
+      valueFiles:
+        - values.yaml
+    path: golang-app-1
+    repoURL: https://github.com/mojeico/golang-helm.git
+
+  syncPolicy:
+    automated: {}
