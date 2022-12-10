@@ -15,10 +15,10 @@ spec:
   source:
     helm:
       parameters:
-        - name: image.tag
-          value: $ARGOCD_APP_SOURCE_TARGET_REVISION
-        - name: migrations.image.tag
-          value: $ARGOCD_APP_SOURCE_TARGET_REVISION
+        #- name: image.tag
+        #  value: $ARGOCD_APP_REVISION
+        #- name: migrations.image.tag
+        #  value: $ARGOCD_APP_REVISION
       valueFiles:
         - values.yaml
     path: golang-app-1
