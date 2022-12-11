@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/golang-app-first
+  repository: public.ecr.aws/t0a2u0h1/golang-app-first
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "main-9151fbfc99d6a9997d0525c1aaabe38c8dd88127"
