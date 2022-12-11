@@ -71,8 +71,14 @@ metadata:
 data:
   # log.level can be one of trace, debug, info, warn or error
   log.level: debug
-
-    
+  registries.conf: |
+    registries:
+    - name: AWS ECR 
+      api_url: https://019088769801.dkr.ecr.us-east-1.amazonaws.com
+      prefix: 019088769801.dkr.ecr.us-east-1.amazonaws.com
+      credentials: pullsecret:argocd/git-creds
+      insecure: true
+      default: true
 
 ---
 apiVersion: v1
