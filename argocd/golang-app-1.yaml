@@ -3,9 +3,13 @@ kind: Application
 metadata:
   annotations:
     #ARGO CD IMAGE UPDATER  --- change it
-    argocd-image-updater.argoproj.io/image-list: public.ecr.aws/t0a2u0h1/golang-app-first
+    argocd-image-updater.argoproj.io/image-list: image-alias=public.ecr.aws/golang-app-first:main-9151fbfc99d6a9997d0525c1aaabe38c8dd88127
+    argocd-image-updater.argoproj.io/myrepo.allow-tags: 'regexp:^main-.*$'
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
-    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/myrepo.force-update: "true"
+    #argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/image-alias.update-strategy: latest
+
     #ARGO CD IMAGE UPDATER  --- change it
   name: golang-app-1
   namespace: argocd
