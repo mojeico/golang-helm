@@ -77,7 +77,6 @@ data:
       api_url: https://019088769801.dkr.ecr.us-east-1.amazonaws.com
       prefix: 019088769801.dkr.ecr.us-east-1.amazonaws.com
       credentials: pullsecret:argocd/git-creds
-      insecure: true
       default: true
 
 ---
