@@ -72,6 +72,8 @@ data:
   # log.level can be one of trace, debug, info, warn or error
   log.level: debug
 
+    
+
 ---
 apiVersion: v1
 kind: ConfigMap
