@@ -25,13 +25,9 @@ spec:
   project: default
   source:
     helm:
-      parameters:
-        #- name: image.tag
-        #  value: $ARGOCD_APP_REVISION
-        #- name: migrations.image.tag
-        #  value: $ARGOCD_APP_REVISION
       valueFiles:
         - values.yaml
+        - values/values-dev.yaml
     path: golang-app-1
     repoURL: https://github.com/mojeico/golang-helm.git
 
