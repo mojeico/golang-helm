@@ -24,10 +24,10 @@ spec:
     namespace: default
   project: default
   source:
-    #helm:
-      #valueFiles:
-        #- values.yaml
-        #- values/values-dev.yaml
+    helm:
+      valueFiles:
+        - values.yaml
+        - values/values-dev.yaml
     path: golang-app-1
     repoURL: https://github.com/mojeico/golang-helm.git
 
