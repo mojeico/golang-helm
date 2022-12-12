@@ -32,7 +32,7 @@ spec:
         #  value: $ARGOCD_APP_REVISION
       valueFiles:
         - values.yaml
-    path: golang-app-1-dev
+    path: golang-app-1
     repoURL: https://github.com/mojeico/golang-helm.git
 
 
