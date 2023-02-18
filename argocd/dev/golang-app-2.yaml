@@ -7,6 +7,8 @@ metadata:
     # work with golang-app-first:v1.1.2 and with v1.1.2-snd but ignore -snd
     #argocd-image-updater.argoproj.io/golang-app-first.update-strategy: semver
 
+    argocd-image-updater.argoproj.io/golang-app-second.force-update: "true"
+
     # work with golang-app-first:v1.1.2 and with v1.1.2-snd but NOT  ignore -snd
     argocd-image-updater.argoproj.io/golang-app-second.allow-tags: regexp:v[0-9]\.[0-9]\.[0-9]-dev
 
