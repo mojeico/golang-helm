@@ -6,9 +6,9 @@ metadata:
     {{- include "golang-app-2.labels" . | nindent 4 }}
 spec:
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 8080
+    - port: 80
+      appProtocol: http
       protocol: TCP
-      name: http
+      targetPort: 8080
   selector:
     {{- include "golang-app-2.selectorLabels" . | nindent 4 }}
