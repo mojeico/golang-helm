@@ -20,18 +20,18 @@ spec:
     ###  ISTIO INTEGRATION ###
 
     # Reference to a Service which the controller updates to point to the canary ReplicaSet
-    canaryService: rollouts-demo-canary
+      canaryService: rollouts-demo-canary
     # Reference to a Service which the controller updates to point to the stable ReplicaSet
-    stableService: rollouts-demo-stable
-    trafficRouting:
-      istio:
-        virtualServices:
-          - name: golang-app-2-canary
-            routes:
-              - http-secondary
-          - name: golang-app-2-stable
-            routes:
-              - http-primary
+      stableService: rollouts-demo-stable
+      trafficRouting:
+        istio:
+          virtualServices:
+            - name: golang-app-2-canary
+              routes:
+                - http-secondary
+            - name: golang-app-2-stable
+              routes:
+                - http-primary
 
 
   revisionHistoryLimit: 2
