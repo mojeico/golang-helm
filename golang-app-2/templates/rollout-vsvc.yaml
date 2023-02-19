@@ -22,7 +22,8 @@ spec:
     #host: service-name
     - golang-app-2-service
   http:
-    - route:
+    - name: primary
+      route:
         - destination:
             host: golang-app-2-service
             #host: service-name
