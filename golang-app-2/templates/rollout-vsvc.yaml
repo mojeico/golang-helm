@@ -21,7 +21,7 @@ spec:
   hosts:
     - golang-app-2-service
   http:
-    - name: primary       # referenced in canary.trafficRouting.istio.virtualService.routes
+    #- name: primary       # referenced in canary.trafficRouting.istio.virtualService.routes
       route:
         - destination:
             host: golang-app-2-service
