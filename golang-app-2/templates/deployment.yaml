@@ -1,10 +1,22 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Rollout
 metadata:
   name: {{ include "golang-app-2.fullname" . }}
   labels:
     {{- include "golang-app-2.labels" . | nindent 4 }}
 spec:
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: { }
+        - setWeight: 40
+        - pause: { duration: 10 }
+        - setWeight: 60
+        - pause: { duration: 10 }
+        - setWeight: 80
+        - pause: { duration: 10 }
+  revisionHistoryLimit: 2
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
