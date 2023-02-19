@@ -1,0 +1,142 @@
+apiVersionOverrides:
+  ingress: ""
+clusterInstall: true
+containerSecurityContext: {}
+controller:
+  affinity: {}
+  component: rollouts-controller
+  createClusterRole: true
+  extraArgs: []
+  extraContainers: []
+  extraEnv: []
+  image:
+    pullPolicy: IfNotPresent
+    registry: quay.io
+    repository: argoproj/argo-rollouts
+    tag: ""
+  initContainers: []
+  livenessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /healthz
+      port: healthz
+    initialDelaySeconds: 30
+    periodSeconds: 20
+    successThreshold: 1
+    timeoutSeconds: 10
+  metrics:
+    enabled: false
+    serviceMonitor:
+      additionalAnnotations: {}
+      additionalLabels: {}
+      enabled: false
+  nodeSelector: {}
+  pdb:
+    annotations: {}
+    enabled: false
+    labels: {}
+    maxUnavailable: null
+    minAvailable: null
+  priorityClassName: ""
+  readinessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 15
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 4
+  replicas: 2
+  resources: {}
+  tolerations: []
+  topologySpreadConstraints: []
+crdAnnotations: {}
+createClusterAggregateRoles: true
+dashboard:
+  affinity: {}
+  component: rollouts-dashboard
+  containerSecurityContext: {}
+  createClusterRole: true
+  enabled: false
+  extraArgs: []
+  extraEnv: []
+  image:
+    pullPolicy: IfNotPresent
+    registry: quay.io
+    repository: argoproj/kubectl-argo-rollouts
+    tag: ""
+  ingress:
+    annotations: {}
+    enabled: false
+    extraPaths: []
+    hosts: []
+    ingressClassName: ""
+    labels: {}
+    pathType: Prefix
+    paths:
+      - /
+    tls: []
+  nodeSelector: {}
+  pdb:
+    annotations: {}
+    enabled: false
+    labels: {}
+    maxUnavailable: null
+    minAvailable: null
+  podSecurityContext:
+    runAsNonRoot: true
+  priorityClassName: ""
+  readonly: false
+  replicas: 1
+  resources: {}
+  service:
+    annotations: {}
+    externalIPs: []
+    labels: {}
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    nodePort: null
+    port: 3100
+    portName: dashboard
+    targetPort: 3100
+    type: ClusterIP
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+  tolerations: []
+  topologySpreadConstraints: []
+extraObjects: []
+fullnameOverride: null
+imagePullSecrets: []
+installCRDs: true
+keepCRDs: true
+kubeVersionOverride: ""
+nameOverride: null
+notifications:
+  notifiers: {}
+  secret:
+    create: false
+    items: {}
+  templates: {}
+  triggers: {}
+podAnnotations: {}
+podLabels: {}
+podSecurityContext:
+  runAsNonRoot: true
+providerRBAC:
+  enabled: true
+  providers:
+    ambassador: true
+    apisix: true
+    awsAppMesh: true
+    awsLoadBalancerController: true
+    istio: true
+    smi: true
+    traefik: true
+serviceAccount:
+  annotations: {}
+  create: true
+  name: ""
+serviceAnnotations: {}
