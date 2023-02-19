@@ -24,7 +24,7 @@ authScripts:
   scripts:
     ecr-login.sh: |
       #!/bin/sh
-      export AWS_ACCESS_KEY_ID=AKIAQI4OHQME4SHZIOOP
-      export AWS_SECRET_ACCESS_KEY=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
+      export AWS_ACCESS_KEY_ID=AKIAQI4OHQME2LHJ54XM
+      export AWS_SECRET_ACCESS_KEY=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
       
       aws ecr --region us-east-1 get-authorization-token --output text --query 'authorizationData[].authorizationToken' | base64 -d
