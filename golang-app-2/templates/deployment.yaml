@@ -25,6 +25,8 @@ spec:
         - pause: { 30 }
         - setWeight: 50
         - pause: { 30 }
+        - setWeight: 95
+        - pause: { 30 }
 
   revisionHistoryLimit: 2
   {{- if not .Values.autoscaling.enabled }}
