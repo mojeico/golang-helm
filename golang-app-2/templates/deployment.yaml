@@ -18,11 +18,6 @@ spec:
         - pause: { duration: 10 }
 
     ###  ISTIO INTEGRATION ###
-
-    # Reference to a Service which the controller updates to point to the canary ReplicaSet
-      canaryService: rollouts-demo-canary
-    # Reference to a Service which the controller updates to point to the stable ReplicaSet
-      stableService: rollouts-demo-stable
       trafficRouting:
         istio:
           virtualService:
