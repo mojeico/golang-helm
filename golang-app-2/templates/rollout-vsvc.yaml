@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: rollout-destrule
+spec:
+  host: golang-app-2-dev
+  subsets:
+    - name: canary   # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
+      labels:        # labels will be injected with canary rollouts-pod-template-hash value
+        app: golang-app-2
+    - name: stable   # referenced in canary.trafficRouting.istio.destinationRule.stableSubsetName
+      labels:        # labels will be injected with stable rollouts-pod-template-hash value
+        app: golang-app-2
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: rollout-vsvc
+spec:
+  hosts:
+    - istio-rollout.dev.argoproj.io
+  http:
+    - name: primary       # referenced in canary.trafficRouting.istio.virtualService.routes
+      route:
+        - destination:
+            host: golang-app-2-dev
+            subset: stable  # referenced in canary.trafficRouting.istio.destinationRule.stableSubsetName
+          weight: 100
+        - destination:
+            host: golang-app-2-dev
+            subset: canary  # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
+          weight: 0

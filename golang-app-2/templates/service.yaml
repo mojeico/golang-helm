@@ -1,23 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rollouts-demo-canary
-  labels:
-    {{- include "golang-app-2.labels" . | nindent 4 }}
-spec:
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 8080
-      protocol: TCP
-      name: http
-  selector:
-    {{- include "golang-app-2.selectorLabels" . | nindent 4 }}
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: rollouts-demo-stable
+  name: {{ include "golang-app-2.fullname" . }}
   labels:
     {{- include "golang-app-2.labels" . | nindent 4 }}
 spec:

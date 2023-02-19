@@ -25,13 +25,14 @@ spec:
       stableService: rollouts-demo-stable
       trafficRouting:
         istio:
-          virtualServices:
-            - name: golang-app-2-canary
-              routes:
-                - http-secondary
-            - name: golang-app-2-stable
-              routes:
-                - http-primary
+          virtualService:
+            name: rollout-vsvc        # required
+            routes:
+              - primary                 # optional if there is a single route in VirtualService, required otherwise
+          destinationRule:
+            name: rollout-destrule    # required
+            canarySubsetName: canary  # required
+            stableSubsetName: stable  # required
 
 
   revisionHistoryLimit: 2
