@@ -18,8 +18,10 @@ kind: VirtualService
 metadata:
   name: rollout-vsvc
 spec:
+  gateways:
+    - istio-rollout-gateway
   hosts:
-    - golang-app-2-service.default.svc.cluster.local
+    - istio-rollout.dev.argoproj.io
   http:
     - name: primary
       route:
