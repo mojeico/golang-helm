@@ -19,15 +19,17 @@ metadata:
   name: rollout-vsvc
 spec:
   hosts:
-    - golang-app-2-service
+    #host: service-name
+    -  golang-app-2-service
   http:
-    #- name: primary       # referenced in canary.trafficRouting.istio.virtualService.routes
-      route:
+    - route:
         - destination:
             host: golang-app-2-service
-            subset: stable  # referenced in canary.trafficRouting.istio.destinationRule.stableSubsetName
+            #host: service-name
+            subset: stable
           weight: 100
         - destination:
             host: golang-app-2-service
-            subset: canary  # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
+            #host: service-name
+            subset: canary
           weight: 0
