@@ -16,6 +16,20 @@ spec:
         - pause: { duration: 10 }
         - setWeight: 80
         - pause: { duration: 10 }
+
+    ###  ISTIO INTEGRATION ###
+
+    # Reference to a Service which the controller updates to point to the canary ReplicaSet
+    canaryService: rollouts-demo-canary
+    # Reference to a Service which the controller updates to point to the stable ReplicaSet
+    stableService: rollouts-demo-stable
+    trafficRouting:
+      istio:
+        virtualServices:
+          - name: golang-app-2-canary
+          - name: golang-app-2-stable
+              # Optional if there is a single HTTP route in the VirtualService, otherwise required
+
   revisionHistoryLimit: 2
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}

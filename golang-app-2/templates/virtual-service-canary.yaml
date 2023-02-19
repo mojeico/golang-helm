@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: golang-app-2-canary
+spec:
+  hosts:
+    #host: with argo the same as virtual-service name
+    - golang-app-2-canary.local
+  http:
+    - route:
+        - destination:
+            host: rollouts-demo-canary
+            port:
+              number: 80
+          weight: 0
