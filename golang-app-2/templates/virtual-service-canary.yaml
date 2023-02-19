@@ -7,7 +7,13 @@ spec:
     #host: with argo the same as virtual-service name
     - golang-app-2-canary.local
   http:
-    - route:
+    - name: http-secondary
+      route:
+        - destination:
+            host: rollouts-demo-stable
+            port:
+              number: 80
+          weight: 100
         - destination:
             host: rollouts-demo-canary
             port:
