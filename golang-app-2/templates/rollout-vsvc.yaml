@@ -20,7 +20,7 @@ metadata:
 spec:
   hosts:
     #host: service-name
-    - istio-rollout.dev.argoproj.io
+    - golang-app-2-service
   http:
     - route:
         - destination:
