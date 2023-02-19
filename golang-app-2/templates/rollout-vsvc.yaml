@@ -19,7 +19,7 @@ metadata:
   name: rollout-vsvc
 spec:
   hosts:
-    - istio-rollout.dev.argoproj.io
+    - golang-app-2-service
   http:
     - name: primary       # referenced in canary.trafficRouting.istio.virtualService.routes
       route:
