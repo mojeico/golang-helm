@@ -3,7 +3,7 @@ kind: DestinationRule
 metadata:
   name: rollout-destrule
 spec:
-  host: golang-app-2-service
+  host: golang-app-2
   subsets:
     - name: canary   # referenced in canary.trafficRouting.istio.destinationRule.canarySubsetName
       labels:        # labels will be injected with canary rollouts-pod-template-hash value
@@ -18,19 +18,18 @@ kind: VirtualService
 metadata:
   name: rollout-vsvc
 spec:
-
   hosts:
-    - rollout-vsvc.local
+    - golang-app-2
   http:
     - name: primary
       route:
         - destination:
-            host: golang-app-2-service
+            host: golang-app-2
             #host: service-name
             subset: stable
           weight: 100
         - destination:
-            host: golang-app-2-service
+            host: golang-app-2
             #host: service-name
             subset: canary
           weight: 0
