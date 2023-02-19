@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 80
       appProtocol: http
-      protocol: TCP
+      protocol: HTTP
       targetPort: 8080
   selector:
     {{- include "golang-app-2.selectorLabels" . | nindent 4 }}
