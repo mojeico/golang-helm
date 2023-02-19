@@ -18,9 +18,8 @@ kind: VirtualService
 metadata:
   name: rollout-vsvc
 spec:
-  hosts:
-    #host: service-name
-    - golang-app-2-service
+  #hosts:
+  #  - golang-app-2-service
   http:
     - name: primary
       route:
