@@ -11,7 +11,9 @@ spec:
     - name: stable   # referenced in canary.trafficRouting.istio.destinationRule.stableSubsetName
       labels:        # labels will be injected with stable rollouts-pod-template-hash value
         app: golang-app-2
-
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
 ---
 
 apiVersion: networking.istio.io/v1beta1
