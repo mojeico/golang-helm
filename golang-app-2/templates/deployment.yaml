@@ -7,11 +7,6 @@ metadata:
 spec:
   strategy:
     canary:
-      steps:
-        - setWeight: 10
-        - pause: {  }
-
-
     ###  ISTIO INTEGRATION ###
       trafficRouting:
         istio:
@@ -23,7 +18,13 @@ spec:
             name: rollout-destrule    # required
             canarySubsetName: canary  # required
             stableSubsetName: stable  # required
-
+      steps:
+        - setWeight: 5
+        - pause: { 20 }
+        - setWeight: 20
+        - pause: { 20 }
+        - setWeight: 50
+        - pause: { 30 }
 
   revisionHistoryLimit: 2
   {{- if not .Values.autoscaling.enabled }}
