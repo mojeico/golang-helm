@@ -20,7 +20,7 @@ spec:
             stableSubsetName: stable  # required
       steps:
         - setWeight: 1
-        - pause: { 30 }
+        - pause: {  }
         - setWeight: 20
         - pause: { 30 }
         - setWeight: 50
